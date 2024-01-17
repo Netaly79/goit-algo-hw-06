@@ -24,7 +24,7 @@
 
 Завдання 3:
 
-<img width="973" alt="image" src="https://github.com/Netaly79/goit-algo-hw-06/assets/48415878/67e7fab8-d851-4316-ab3d-80e80f0cb895">
+<img width="1052" alt="image" src="https://github.com/Netaly79/goit-algo-hw-06/assets/48415878/2ad72106-26af-451f-ad88-aa5138be57d3">
 
 <img width="763" alt="image" src="https://github.com/Netaly79/goit-algo-hw-06/assets/48415878/ffaf8fe3-1c81-4881-9ccd-380765240e99">
 
