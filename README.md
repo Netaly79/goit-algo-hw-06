@@ -20,3 +20,12 @@
 Турбоатом > Героїв Праці > Палац спорту > Армійська > імени О.С.Масельського > Тракторний завод > Індустріальна
 
 Пошук в ширину - відвідується перша вершина, а потім кожна з віршин на гілках згідно віддаленості від першої вершини.
+
+
+Завдання 3:
+
+<img width="973" alt="image" src="https://github.com/Netaly79/goit-algo-hw-06/assets/48415878/67e7fab8-d851-4316-ab3d-80e80f0cb895">
+
+<img width="763" alt="image" src="https://github.com/Netaly79/goit-algo-hw-06/assets/48415878/ffaf8fe3-1c81-4881-9ccd-380765240e99">
+
+<img width="733" alt="image" src="https://github.com/Netaly79/goit-algo-hw-06/assets/48415878/440a1920-b7fa-4bda-9f62-9b0a1cd0cf1d">
