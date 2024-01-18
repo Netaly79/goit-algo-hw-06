@@ -1,5 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import heapq
 from collections import deque
 
 
@@ -24,6 +25,29 @@ def bfs_recursive(graph, queue, visited=None):
         visited.add(vertex)
         queue.extend(set(graph[vertex]) - visited)
     bfs_recursive(graph, queue, visited)
+
+def shortest_path(graph, start):
+    dist = {node: float('infinity') for node in graph}
+    paths = {node: [] for node in graph}
+    dist[start] = 0
+    priority_queue = [(0, start, [start])]
+
+    while priority_queue:
+        cur_dist, cur_node, cur_path = heapq.heappop(priority_queue)
+
+        if cur_dist > dist[cur_node]:
+            continue
+
+        for neighbor, weight in graph[cur_node].items():
+            distance = cur_dist + weight['weight']
+
+            if distance < dist[neighbor]:
+                dist[neighbor] = distance
+                new_path = cur_path + [neighbor]
+                paths[neighbor] = new_path
+                heapq.heappush(priority_queue, (distance, neighbor, new_path))
+
+    return {"path":paths, "dist": dist}
 
 
 def print_shortest_path(shortest_paths):
@@ -72,9 +96,11 @@ nx.draw(G, pos, with_labels=True, node_color=list(colors))
 labels = nx.get_edge_attributes(G, 'weight')
 nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
 
-print("Кількість вершин: ", G.number_of_nodes())
-print("Кількість ребер: ", G.number_of_edges())
-is_connected = nx.is_connected(G)  # True
+print("Кількість вершин: ", G.number_of_nodes(), "\n")
+print("Кількість ребер: ", G.number_of_edges(), "\n")
+print("Ступень центральності: ", nx.degree_centrality(G), "\n")
+print("Близькість вузла", nx.closeness_centrality(G), "\n")
+print("Посередництво вузла", nx.betweenness_centrality(G), "\n")
 
 # Display the plot
 plt.text(0.5, 0.005, f"{G.name}", transform=plt.gca(
@@ -89,14 +115,11 @@ bfs_recursive(G, deque(['Держпром']))
 
 print("\n\n")
 
-shortest_paths = nx.single_source_dijkstra_path(G, source='Держпром')
-shortest_path_lengths = nx.single_source_dijkstra_path_length(
-    G, source='Держпром')
+shortest_paths = shortest_path(G, 'Держпром')
 
 print("Hайкоротші шляхи від станції 'Держпром' до всіх інших станцій\n")
-print_shortest_path(shortest_paths)
+print_shortest_path(shortest_paths["path"])
 print("\n\n")
+
 print("Довжини найкоротших шляхів від станції 'Держпром' до всіх інших станцій\n")
-print_shortest_path_lengths(shortest_path_lengths)
-
-
+print_shortest_path_lengths(shortest_paths["dist"])
